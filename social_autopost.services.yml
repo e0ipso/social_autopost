@@ -1,4 +1,4 @@
 services:
   plugin.manager.network.processor:
     class: Drupal\social_autopost\Plugin\NetworkManager
-    parent: default_plugin_manager
+    arguments: ['@container.namespaces', '@cache.discovery', '@module_handler', '@config.factory']

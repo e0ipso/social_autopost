@@ -35,4 +35,13 @@ class Network extends Plugin {
    */
   public $label;
 
+  /**
+   * A list of extra handlers.
+   *
+   * @var array
+   *
+   * @todo Check the entity type plugins to copy from.
+   */
+  public $handlers = array();
+
 }

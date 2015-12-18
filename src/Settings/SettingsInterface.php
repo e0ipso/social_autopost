@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Contains \Drupal\social_autopost\Settings\SettingsInterface.
+ */
+
+namespace Drupal\social_autopost\Settings;
+use Drupal\Core\Config\ImmutableConfig;
+
+/**
+ * Class SettingsInterface.
+ *
+ * @package Drupal\social_autopost\Settings
+ */
+interface SettingsInterface {
+
+  /**
+   * Gets the configuration object.
+   *
+   * @return ImmutableConfig
+   */
+  public function getConfig();
+
+  /**
+   * Factory method to create a new settings object.
+   *
+   * @param ImmutableConfig $config
+   *   The configuration object.
+   */
+  public static function create(ImmutableConfig $config);
+
+}
