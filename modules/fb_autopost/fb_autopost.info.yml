@@ -1,0 +1,5 @@
+name: Facebook Autopost
+type: module
+description: Allows posting content to Facebook automatically.
+core: 8.x
+package: Social

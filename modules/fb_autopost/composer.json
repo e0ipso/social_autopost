@@ -1,0 +1,12 @@
+{
+    "name": "e0ipso/fb_autopost",
+    "require": {
+        "facebook/php-sdk-v4": "5.1.*"
+    },
+    "authors": [
+        {
+            "name": "Mateu Aguiló Bosch",
+            "email": "mateu.aguilo.bosch@gmail.com"
+        }
+    ]
+}
