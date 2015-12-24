@@ -46,6 +46,9 @@ abstract class NetworkBase extends PluginBase implements NetworkInterface {
    *
    * @return mixed $library_instance
    *   The initialized 3rd party library instance.
+   *
+   * @throws SocialAutopostException
+   *   If the SDK library does not exist.
    */
   abstract protected function initSdk();
 

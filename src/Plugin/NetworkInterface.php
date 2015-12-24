@@ -14,7 +14,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 /**
  * Defines an interface for Social Network plugins.
  */
-interface NetworkInterface extends PluginInspectionInterface, ExecutableInterface, ContainerFactoryPluginInterface {
+interface NetworkInterface extends PluginInspectionInterface, ContainerFactoryPluginInterface {
 
   /**
    * Authenticates the request with the SDK library.
