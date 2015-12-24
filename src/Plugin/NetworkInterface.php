@@ -8,12 +8,13 @@
 namespace Drupal\social_autopost;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Executable\ExecutableInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
  * Defines an interface for Social Network plugins.
  */
-interface NetworkInterface extends PluginInspectionInterface {
+interface NetworkInterface extends PluginInspectionInterface, ExecutableInterface, ContainerFactoryPluginInterface {
 
   /**
    * Authenticates the request with the SDK library.
@@ -32,15 +33,5 @@ interface NetworkInterface extends PluginInspectionInterface {
    * Uses the underlying SDK library to publish to the social network.
    */
   public function doPost();
-
-  /**
-   * Initialize the plugin.
-   *
-   * This method is called upon plugin instantiation.
-   *
-   * @param ConfigFactoryInterface $config_factory
-   *   The injected configuration factory.
-   */
-  public function init(ConfigFactoryInterface $config_factory);
 
 }

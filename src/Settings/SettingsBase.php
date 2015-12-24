@@ -35,7 +35,7 @@ abstract class SettingsBase implements SettingsInterface {
   /**
    * {@inheritdoc}
    */
-  public static function create(ImmutableConfig $config) {
+  public static function factory(ImmutableConfig $config) {
     return new static($config);
   }
 

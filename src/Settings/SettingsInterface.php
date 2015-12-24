@@ -19,6 +19,7 @@ interface SettingsInterface {
    * Gets the configuration object.
    *
    * @return ImmutableConfig
+   *   The configuration object associated with the settings.
    */
   public function getConfig();
 
@@ -28,6 +29,6 @@ interface SettingsInterface {
    * @param ImmutableConfig $config
    *   The configuration object.
    */
-  public static function create(ImmutableConfig $config);
+  public static function factory(ImmutableConfig $config);
 
 }

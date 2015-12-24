@@ -18,13 +18,6 @@ use Drupal\Core\Extension\ModuleHandlerInterface;
 class NetworkManager extends DefaultPluginManager {
 
   /**
-   * The injected config factory.
-   *
-   * @var ConfigFactoryInterface
-   */
-  protected $configFactory;
-
-  /**
    * Constructor for NetworkManager objects.
    *
    * @param \Traversable $namespaces
@@ -40,20 +33,6 @@ class NetworkManager extends DefaultPluginManager {
 
     $this->alterInfo('social_autopost_network_info');
     $this->setCacheBackend($cache_backend, 'social_autopost_network_plugins');
-
-    $this->configFactory = $config_factory;
-  }
-
-  /**
-   * {@inheritdoc}
-   *
-   * Force the init method to be called during the plugin instance.
-   */
-  public function createInstance($plugin_id, array $configuration = array()) {
-    $instance = parent::createInstance($plugin_id, $configuration);
-    if ($instance instanceof NetworkInterface) {
-      $instance->init($this->configFactory);
-    }
   }
 
 }
