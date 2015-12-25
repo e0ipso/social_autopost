@@ -46,4 +46,6 @@ interface FacebookSettingsInterface {
    */
   public function getDefaultToken();
 
+  //TODO: Inspect the \Facebook\Facebook class to see more properties.
+
 }

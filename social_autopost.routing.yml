@@ -1,0 +1,7 @@
+social_autopost.settings:
+  path: '/admin/config/services/social-autopost'
+  defaults:
+    _controller: '\Drupal\social_autopost\Controller\SocialAutopostSettingsController::integrations'
+    _title: 'Facebook Autopost Settings'
+  requirements:
+    _permission: 'administer social autopost settings'

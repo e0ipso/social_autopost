@@ -1,0 +1,4 @@
+social_autopost.settings.tab:
+  title: 'Integrations'
+  route_name: social_autopost.settings
+  base_route: social_autopost.settings

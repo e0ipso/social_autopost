@@ -4,6 +4,7 @@
  * @file
  * Contains \Drupal\fb_autopost\Settings\FacebookSettings.
  */
+
 namespace Drupal\fb_autopost\Settings;
 use Drupal\social_autopost\Settings\SettingsBase;
 

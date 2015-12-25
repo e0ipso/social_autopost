@@ -3,3 +3,6 @@ type: module
 description: Allows posting content to Facebook automatically.
 core: 8.x
 package: Social
+
+dependencies:
+  - social_autopost

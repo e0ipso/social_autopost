@@ -1,5 +1,4 @@
 <?php
-use Drupal\fb_autopost\Settings\FacebookSettingsInterface;
 
 /**
  * @file
@@ -21,8 +20,9 @@ use Drupal\social_autopost\SocialAutopostException;
  *   label = "Facebook",
  *   handlers = {
  *     "settings": {
- *       "class": "\Drupal\fb_autopost\Settings\FacebookSettings"
- *       "config_id": "fb_autopost_settings"
+ *       "class": "\Drupal\fb_autopost\Settings\FacebookSettings",
+ *       "config_id": "fb_autopost.settings",
+ *       "route": "fb_autopost.settings"
  *     }
  *   }
  * )
@@ -84,6 +84,5 @@ class Facebook extends NetworkBase implements FacebookInterface {
       throw new SocialAutopostException(sprintf('Please check your Facebook Autopost configuration page. The following errors were found: %s', implode("\n", $errors)));
     }
   }
-
 
 }

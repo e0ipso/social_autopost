@@ -1,0 +1,4 @@
+fb_autopost.settings.tab:
+  title: 'Facebook'
+  route_name: fb_autopost.settings
+  base_route: social_autopost.settings

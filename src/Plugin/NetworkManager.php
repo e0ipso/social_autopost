@@ -5,7 +5,7 @@
  * Contains \Drupal\social_autopost\Plugin\NetworkManager.
  */
 
-namespace Drupal\social_autopost;
+namespace Drupal\social_autopost\Plugin;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
@@ -28,7 +28,7 @@ class NetworkManager extends DefaultPluginManager {
    * @param \Drupal\Core\Extension\ModuleHandlerInterface $module_handler
    *   The module handler to invoke the alter hook with.
    */
-  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler, ConfigFactoryInterface $config_factory) {
+  public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
     parent::__construct('Plugin/Network', $namespaces, $module_handler, 'Drupal\social_autopost\Plugin\NetworkInterface', 'Drupal\social_autopost\Annotation\Network');
 
     $this->alterInfo('social_autopost_network_info');
