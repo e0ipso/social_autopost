@@ -1,0 +1,4 @@
+destinations:
+  me:
+    label: Current user
+    feed_id: me
