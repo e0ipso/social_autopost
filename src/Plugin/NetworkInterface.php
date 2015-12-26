@@ -5,10 +5,9 @@
  * Contains \Drupal\social_autopost\Plugin\NetworkInterface.
  */
 
-namespace Drupal\social_autopost;
+namespace Drupal\social_autopost\Plugin;
 
 use Drupal\Component\Plugin\PluginInspectionInterface;
-use Drupal\Core\Executable\ExecutableInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 
 /**
@@ -33,5 +32,13 @@ interface NetworkInterface extends PluginInspectionInterface, ContainerFactoryPl
    * Uses the underlying SDK library to publish to the social network.
    */
   public function doPost();
+
+  /**
+   * Gets the underlying SDK library.
+   *
+   * @return mixed
+   *   The SDK client.
+   */
+  public function getSdk();
 
 }

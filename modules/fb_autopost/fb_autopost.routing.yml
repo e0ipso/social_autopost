@@ -5,3 +5,12 @@ fb_autopost.settings:
     _title: 'Facebook Autopost Settings'
   requirements:
     _permission: 'administer social autopost settings'
+
+
+fb_autopost.login_callback:
+  path: '/admin/config/services/social-autopost/fb-autopost/login-callback'
+  defaults:
+    _controller: '\Drupal\fb_autopost\Controller\FacebookLoginCallbackController::saveAccessToken'
+    _title: 'Facebook Login Callback'
+  requirements:
+    _permission: 'administer social autopost settings'

@@ -6,7 +6,7 @@
  */
 
 namespace Drupal\fb_autopost\Plugin\Network;
-use Drupal\social_autopost\NetworkInterface;
+use Drupal\social_autopost\Plugin\NetworkInterface;
 
 /**
  * Class FacebookInterface.

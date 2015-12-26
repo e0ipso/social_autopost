@@ -5,12 +5,13 @@
  * Contains \Drupal\social_autopost\Plugin\NetworkBase.
  */
 
-namespace Drupal\social_autopost;
+namespace Drupal\social_autopost\Plugin;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Plugin\PluginBase;
 use Drupal\social_autopost\Settings\SettingsInterface;
+use Drupal\social_autopost\SocialAutopostException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -94,11 +95,11 @@ abstract class NetworkBase extends PluginBase implements NetworkInterface {
    */
   protected function init(ConfigFactoryInterface $config_factory) {
     $definition = $this->getPluginDefinition();
-    if (empty($definition['handlers']['settings']['class']) || empty($definition['handlers']['settings']['config_id']) || !class_exists($this->hadlers['settings'])) {
+    if (empty($definition['handlers']['settings']['class']) || empty($definition['handlers']['settings']['config_id']) || !class_exists($definition['handlers']['settings']['class'])) {
       throw new SocialAutopostException('There is no class for the settings. Please check your plugin annotation.');
     }
     $config = $config_factory->get($definition['handlers']['settings']['config_id']);
-    $settings = call_user_func(array($definition['handlers']['settings'], 'factory'), $config);
+    $settings = call_user_func($definition['handlers']['settings']['class'] . '::factory', $config);
     if (!$settings instanceof SettingsInterface) {
       throw new SocialAutopostException('The provided settings class does not implement the expected settings interface.');
     }
@@ -106,9 +107,9 @@ abstract class NetworkBase extends PluginBase implements NetworkInterface {
   }
 
   /**
-   * Gets the underlying SDK library.
+   * {@inheritdoc}
    */
-  protected function getSdk() {
+  public function getSdk() {
     if (empty($this->sdk)) {
       $this->sdk = $this->initSdk();
     }

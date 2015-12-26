@@ -8,21 +8,30 @@
 namespace Drupal\fb_autopost\Form;
 
 use Drupal\Core\Form\FormInterface;
-use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\social_autopost\Form\NetworkFormBase;
+use Facebook\Exceptions\FacebookSDKException;
 
 /**
  * Class FacebookSettingsForm.
  *
  * @package Drupal\fb_autopost\Form
  */
-class FacebookSettingsForm extends ConfigFormBase implements FormInterface {
+class FacebookSettingsForm extends NetworkFormBase implements FormInterface {
 
   /**
    * {@inheritdoc}
    */
   public function getFormID() {
     return 'fb_autopost_settings';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected static function getNetworkMachineName() {
+    return 'facebook';
   }
 
   /**
@@ -59,6 +68,55 @@ class FacebookSettingsForm extends ConfigFormBase implements FormInterface {
       '#description' => $this->t("Enter a destination per line. Each line should contain the label of the destination and the Facebook's feed ID. Add the special feed ID 'me' to post to the currently visitor's Facebook feed."),
       '#default_value' => $this::encodeDestinations($config->get('destinations')),
     ];
+
+    if ($config->get('app_id') && $config->get('app_secret')) {
+      $fb = $this->network->getSdk();
+      $helper = $fb->getRedirectLoginHelper();
+      if ($access_token = $helper->getAccessToken()) {
+        $url = $helper->getLogoutUrl($access_token);
+        $text = $this->t('Logout');
+      }
+      else {
+        $url_object = Url::fromRoute('fb_autopost.login_callback', [], [
+          'absolute' => TRUE,
+        ]);
+        $url = $helper->getLoginUrl($url_object->toString(), []);
+        $text = $this->t('Login');
+      }
+      try {
+        $response = $fb->get('/me');
+        $status = TRUE;
+      }
+      catch (FacebookSDKException $e) {
+        $status = FALSE;
+      }
+      $form['authentication'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('Authentication'),
+        '#description' => $this->t('Use this section to authenticate with Facebook.'),
+        'table' => [
+          '#type' => 'table',
+          '#rows' => [
+            [
+              ['header' => TRUE, 'data' => $this->t('Status')],
+              $status ? $this->t('Enabled') : $this->t('Disabled'),
+            ],
+            [
+              ['header' => TRUE, 'data' => $this->t('Action')],
+              [
+                'data' => [
+                  '#type' => 'link',
+                  '#url' => Url::fromUri($url),
+                  '#title' => $text,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ];
+
+    }
+
     return $form;
   }
 

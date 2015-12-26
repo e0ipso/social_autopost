@@ -6,6 +6,7 @@
  */
 
 namespace Drupal\fb_autopost\Settings;
+
 use Drupal\social_autopost\Settings\SettingsBase;
 
 /**
@@ -47,7 +48,7 @@ class FacebookSettings extends SettingsBase implements FacebookSettingsInterface
    * {@inheritdoc}
    */
   public function getAppId() {
-    if ($this->appId) {
+    if (!$this->appId) {
       $this->appId = $this->config->get('app_id');
     }
     return $this->appId;
@@ -57,7 +58,7 @@ class FacebookSettings extends SettingsBase implements FacebookSettingsInterface
    * {@inheritdoc}
    */
   public function getAppSecret() {
-    if ($this->appSecret) {
+    if (!$this->appSecret) {
       $this->appSecret = $this->config->get('app_secret');
     }
     return $this->appSecret;
@@ -67,7 +68,7 @@ class FacebookSettings extends SettingsBase implements FacebookSettingsInterface
    * {@inheritdoc}
    */
   public function getVersion() {
-    if ($this->version) {
+    if (!$this->version) {
       $this->version = $this->config->get('version');
     }
     return $this->version;
@@ -77,7 +78,7 @@ class FacebookSettings extends SettingsBase implements FacebookSettingsInterface
    * {@inheritdoc}
    */
   public function getDefaultToken() {
-    if ($this->defaultToken) {
+    if (!$this->defaultToken) {
       $this->defaultToken = $this->config->get('default_token');
     }
     return $this->defaultToken;

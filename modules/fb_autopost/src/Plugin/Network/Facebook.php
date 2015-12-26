@@ -7,7 +7,7 @@
 
 namespace Drupal\fb_autopost\Plugin\Network;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\social_autopost\NetworkBase;
+use Drupal\social_autopost\Plugin\NetworkBase;
 use Drupal\social_autopost\SocialAutopostException;
 
 /**
