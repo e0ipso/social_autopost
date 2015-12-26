@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * @file
+ * Module implementation file.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function social_autopost_help($route_name, \Drupal\Core\Routing\RouteMatchInterface $route_match) {
+  $message = NULL;
+  switch ($route_name) {
+    case 'social_autopost.settings':
+      $message = t('Social Autopost allows social integrations so be integrated with Drupal. Every social integration is a different module that provided the API adaptors to every social network SDK.');
+      break;
+  }
+  return $message;
+}

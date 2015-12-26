@@ -21,8 +21,7 @@ use Drupal\social_autopost\SocialAutopostException;
  *   handlers = {
  *     "settings": {
  *       "class": "\Drupal\fb_autopost\Settings\FacebookSettings",
- *       "config_id": "fb_autopost.settings",
- *       "route": "fb_autopost.settings"
+ *       "config_id": "fb_autopost.settings"
  *     }
  *   }
  * )

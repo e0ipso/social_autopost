@@ -6,6 +6,7 @@
  */
 
 namespace Drupal\social_autopost\Controller;
+
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -50,28 +51,22 @@ class SocialAutopostSettingsController extends ControllerBase {
    */
   public function integrations() {
     $networks = $this->networkManager->getDefinitions();
-    if (empty($networks)) {
-      return [
-        '#type' => 'html_tag',
-        '#tag' => 'p',
-        '#value' => $this->t('There are no social integrations enabled.'),
+    $header = [
+      $this->t('Machine name'),
+      $this->t('Label'),
+    ];
+    $data = [];
+    foreach ($networks as $network) {
+      $data[] = [
+        $network['id'],
+        $network['label'],
       ];
     }
-    $items = [];
-    foreach ($networks as $network) {
-      if (empty($network['handlers']['settings']['route'])) {
-        continue;
-      }
-      $items[] = Link::createFromRoute($network['label'], $network['handlers']['settings']['route']);
-    }
     return [
-      '#theme' => 'html_tag',
-      '#tag' => 'h3',
-      '#value' => $this->t('Social Autopost integrations'),
-      'items' => [
-        '#theme' => 'item_list',
-        '#items' => $items,
-      ],
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $data,
+      '#empty' => $this->t('There are no social integrations enabled.'),
     ];
   }
 }
