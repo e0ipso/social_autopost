@@ -2,3 +2,11 @@ destinations:
   me:
     label: Current user
     feed_id: me
+permissions:
+  public_profile:
+    - public_profile
+  pages:
+    - manage_pages
+    - publish_pages
+  extended_permissions_publish:
+    - publish_actions

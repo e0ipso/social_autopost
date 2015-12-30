@@ -1,0 +1,23 @@
+#facebook-summary .item-list h3 {
+    font-size: 1em;
+    display: inline
+}
+
+#facebook-summary .item-list ul {
+    display: inline;
+}
+
+#facebook-summary .item-list ul li {
+    display: inline-block;
+    font-size: 0.7em;
+    margin: 0.5em;
+}
+
+#facebook-summary .additional-info::before {
+    content: '(';
+    margin-left: 0.5em;
+}
+
+#facebook-summary .additional-info::after {
+    content: ')';
+}

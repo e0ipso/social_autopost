@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Module implementation file.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+function fb_autopost_cron() {
+  $state = \Drupal::state();
+  // Delete the access token if it's expired.
+  if (($access_token = $state->get('fb_autopost.access_token')) && $access_token->isExpired()) {
+    $state->delete('fb_autopost.access_token');
+  }
+}
