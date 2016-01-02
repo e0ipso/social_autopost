@@ -103,6 +103,13 @@ class FacebookSettingsForm extends NetworkFormBase implements FormInterface {
 
     }
 
+    $form['authentication']['expiration_notification_email'] = [
+      '#type' => 'email',
+      '#title' => $this->t('Expiration Notification Email'),
+      '#default_value' => $config->get('expiration_notification_email'),
+      '#description' => $this->t('Use this email to send a notification that the Facebook token is about to expire. When you get that email, you will need to come back to this page and log out from Facebook and log back in to refresh the token.'),
+    ];
+
     // Build the permissions form.
     $default_permissions = $config->get('permissions');
     $form['permissions'] = [
@@ -427,7 +434,7 @@ class FacebookSettingsForm extends NetworkFormBase implements FormInterface {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $config = $this->config('fb_autopost.settings');
-    $properties = ['app_id', 'app_secret', 'version'];
+    $properties = ['app_id', 'app_secret', 'version', 'expiration_notification_email'];
     array_walk($properties, function ($property) use ($config, $form_state) {
       $config->set($property, $form_state->getValue($property));
     });

@@ -5,13 +5,58 @@
  * Module implementation file.
  */
 
+use Drupal\Core\Url;
+
+/**
+ * The number of days to notify prior to the expiration.
+ *
+ * @var int
+ *
+ * @todo Export this co CMI.
+ */
+define('FB_AUTOPOST_NOTIFICATION_EXPIRATION_DAYS', 2);
+
 /**
  * Implements hook_cron().
  */
 function fb_autopost_cron() {
   $state = \Drupal::state();
   // Delete the access token if it's expired.
-  if (($access_token = $state->get('fb_autopost.access_token')) && $access_token->isExpired()) {
+  if (!$access_token = $state->get('fb_autopost.access_token')) {
+    return;
+  }
+  if ($access_token->isExpired()) {
     $state->delete('fb_autopost.access_token');
+  }
+  $now = new \DateTime();
+  $period = $now->diff($access_token->getExpiresAt());
+
+  if (
+    ($email = \Drupal::config('fb_autopost.settings')->get('expiration_notification_email')) &&
+    $period->days < FB_AUTOPOST_NOTIFICATION_EXPIRATION_DAYS
+  ) {
+    // Send the token expiration email to the selected email address.
+    $mail_manager = \Drupal::service('plugin.manager.mail');
+    /* @var \Drupal\Core\Language\LanguageInterface $default_language */
+    $default_language = \Drupal::service('language.default')->get();
+    $mail_manager->mail('fb_autopost', 'token_expiration', $email, $default_language->getId());
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function fb_autopost_mail($key, &$message, $params) {
+  $variables = array(
+    '%site_name' => \Drupal::config('system.site')->get('name'),
+    '@fb_url' => Url::fromRoute('fb_autopost.settings', [], [
+      'absolute' => TRUE,
+    ])->toString(),
+  );
+  switch ($key) {
+    case 'token_expiration':
+      $message['subject'] = t('Facebook token about to expire for %site_name', $variables, array('langcode' => $message['langcode']));
+      $message['body'][] = t('Your facebook token is expired or about to expire. If you want the Facebook Autoposting to keep working you will need to re-authenticate manually in @fb_url.', $variables, array('langcode' => $message['langcode']));
+      break;
   }
 }
