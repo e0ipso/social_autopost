@@ -5,3 +5,103 @@ social_autopost.settings:
     _title: 'Social Autopost Settings'
   requirements:
     _permission: 'administer social autopost settings'
+
+# Autopost routing definition
+entity.autopost.canonical:
+  path: '/admin/structure/autopost/{autopost}'
+  defaults:
+    _entity_view: 'autopost'
+    _title: 'Autopost'
+  requirements:
+    _entity_access: 'autopost.view'
+  options:
+    _admin_route: TRUE
+
+entity.autopost.collection:
+  path: '/admin/structure/autopost'
+  defaults:
+    _entity_list: 'autopost'
+    _title: 'Autopost list'
+  requirements:
+    _permission: 'view autopost entities'
+  options:
+    _admin_route: TRUE
+
+entity.autopost.edit_form:
+  path: '/admin/structure/autopost/{autopost}/edit'
+  defaults:
+    _entity_form: autopost.edit
+    _title: 'Edit Autopost'
+  requirements:
+    _permission: 'edit autopost entities'
+  options:
+    _admin_route: TRUE
+
+entity.autopost.delete_form:
+  path: '/admin/structure/autopost/{autopost}/delete'
+  defaults:
+    _entity_form: autopost.delete
+    _title: 'Delete Autopost'
+  requirements:
+    _permission: 'delete autopost entities'
+  options:
+    _admin_route: TRUE
+
+autopost.add_page:
+  path: '/admin/structure/autopost/add'
+  defaults:
+    _controller: '\Drupal\social_autopost\Controller\AutopostAddController::add'
+    _title: 'Add Autopost'
+  requirements:
+    _permission: 'add autopost entities'
+
+entity.autopost.add_form:
+  path: '/admin/structure/autopost/add/{autopost_type}'
+  defaults:
+    _controller: '\Drupal\social_autopost\Controller\AutopostAddController::addForm'
+    _title_callback: '\Drupal\social_autopost\Controller\AutopostAddController::getAddFormTitle'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'add autopost entities'
+
+# AutopostType routing definition
+entity.autopost_type.collection:
+  path: '/admin/structure/autopost_type'
+  defaults:
+    _entity_list: 'autopost_type'
+    _title: 'Autopost type'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+entity.autopost_type.add_form:
+  path: '/admin/structure/autopost_type/add'
+  defaults:
+    _entity_form: 'autopost_type.add'
+    _title: 'Add Autopost type'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+entity.autopost_type.edit_form:
+  path: '/admin/structure/autopost_type/{autopost_type}'
+  defaults:
+    _entity_form: 'autopost_type.edit'
+    _title: 'Edit Autopost type'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+entity.autopost_type.delete_form:
+  path: '/admin/structure/autopost_type/{autopost_type}/delete'
+  defaults:
+    _entity_form: 'autopost_type.delete'
+    _title: 'Delete Autopost type'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

@@ -3,3 +3,19 @@ social_autopost.settings:
   title: 'Social Autopost'
   parent: system.admin_config_services
   description: 'Settings to configure the Social Autopost module.'
+
+# Autopost menu items definition
+entity.autopost.collection:
+  title: 'Autopost list'
+  route_name: entity.autopost.collection
+  description: 'List Autopost entities'
+  parent: system.admin_structure
+  weight: 100
+
+# Autopost type menu items definition
+entity.autopost_type.collection:
+  title: 'Autopost type'
+  route_name: entity.autopost_type.collection
+  description: 'List Autopost type (bundles)'
+  parent: system.admin_structure
+  weight: 99

@@ -2,3 +2,19 @@ social_autopost.settings.tab:
   title: 'Integrations'
   route_name: social_autopost.settings
   base_route: social_autopost.settings
+# Autopost routing definition
+entity.autopost.canonical:
+  route_name: entity.autopost.canonical
+  base_route: entity.autopost.canonical
+  title: 'View'
+
+entity.autopost.edit_form:
+  route_name: entity.autopost.edit_form
+  base_route: entity.autopost.canonical
+  title: Edit
+
+entity.autopost.delete_form:
+  route_name:  entity.autopost.delete_form
+  base_route:  entity.autopost.canonical
+  title: Delete
+  weight: 10

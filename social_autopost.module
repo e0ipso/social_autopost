@@ -17,3 +17,21 @@ function social_autopost_help($route_name, \Drupal\Core\Routing\RouteMatchInterf
   }
   return $message;
 }
+
+/**
+ * Implements hook_theme().
+ */
+function social_autopost_theme() {
+  $theme = [];
+  $theme['autopost'] = [
+    'render element' => 'elements',
+    'file' => 'autopost.page.inc',
+    'template' => 'autopost',
+  ];
+  $theme['autopost_content_add_list'] = [
+    'render element' => 'content',
+    'variables' => ['content' => NULL],
+    'file' => 'autopost.page.inc',
+  ];
+  return $theme;
+}

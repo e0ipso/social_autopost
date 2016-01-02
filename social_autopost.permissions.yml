@@ -1,3 +1,23 @@
 administer social autopost settings:
   title: Administer Social Autopost
   description: Allow configuring Social Autopost and the all its networks.
+
+add autopost entities:
+  title: 'Create new Autopost entities'
+
+administer autopost entities:
+  title: 'Administer Autopost entities'
+  description: 'Allow to access the administration form to configure Autopost entities.'
+  restrict access: true
+
+delete autopost entities:
+  title: 'Delete Autopost entities'
+
+edit autopost entities:
+  title: 'Edit Autopost entities'
+
+view published autopost entities:
+  title: 'View published Autopost entities'
+
+view unpublished autopost entities:
+  title: 'View unpublished Autopost entities'

@@ -1,0 +1,12 @@
+entity.autopost.add_form:
+  route_name: 'autopost.add_page'
+  title: 'Add Autopost'
+  appears_on:
+    - entity.autopost.collection
+    - entity.autopost.canonical
+
+entity.autopost_type.add_form:
+  route_name: 'entity.autopost_type.add_form'
+  title: 'Add Autopost type'
+  appears_on:
+    - entity.autopost_type.collection
