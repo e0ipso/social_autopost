@@ -8,6 +8,7 @@
 namespace Drupal\social_autopost;
 
 use Drupal\Core\Entity\EntityAccessControlHandler;
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 
@@ -17,10 +18,12 @@ use Drupal\Core\Access\AccessResult;
  * @see \Drupal\social_autopost\Entity\Autopost.
  */
 class AutopostAccessControlHandler extends EntityAccessControlHandler {
+
   /**
    * {@inheritdoc}
    */
-  protected function checkAccess(AutopostInterface $entity, $operation, AccountInterface $account) {
+  protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
+    /* @var AutopostInterface $entity */
     switch ($operation) {
       case 'view':
         if (!$entity->isPublished()) {

@@ -69,24 +69,30 @@ class FacebookSettingsForm extends NetworkFormBase implements FormInterface {
       '#default_value' => $this::encodeDestinations($config->get('destinations')),
     ];
 
+    $form['authentication'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Authentication'),
+      '#description' => $this->t('Use this section to authenticate with Facebook.'),
+      'expiration_notification_email' => [
+        '#type' => 'email',
+        '#title' => $this->t('Expiration Notification Email'),
+        '#default_value' => $config->get('expiration_notification_email'),
+        '#description' => $this->t('Use this email to send a notification that the Facebook token is about to expire. When you get that email, you will need to come back to this page and log out from Facebook and log back in to refresh the token.'),
+      ],
+    ];
     if ($config->get('app_id') && $config->get('app_secret')) {
       list($status, $link, $fb_user) = $this->getAuthenticationState($config);
-      $form['authentication'] = [
-        '#type' => 'fieldset',
-        '#title' => $this->t('Authentication'),
-        '#description' => $this->t('Use this section to authenticate with Facebook.'),
-        'table' => [
-          '#id' => 'facebook-summary',
-          '#type' => 'table',
-          '#rows' => [
-            [
-              ['header' => TRUE, 'data' => $this->t('Status')],
-              $status ? $this->t('Enabled') : $this->t('Disabled'),
-            ],
-            [
-              ['header' => TRUE, 'data' => $this->t('Action')],
-              ['data' => $link],
-            ],
+      $form['authentication']['table'] = [
+        '#id' => 'facebook-summary',
+        '#type' => 'table',
+        '#rows' => [
+          [
+            ['header' => TRUE, 'data' => $this->t('Status')],
+            $status ? $this->t('Enabled') : $this->t('Disabled'),
+          ],
+          [
+            ['header' => TRUE, 'data' => $this->t('Action')],
+            ['data' => $link],
           ],
         ],
       ];
@@ -102,13 +108,6 @@ class FacebookSettingsForm extends NetworkFormBase implements FormInterface {
       }
 
     }
-
-    $form['authentication']['expiration_notification_email'] = [
-      '#type' => 'email',
-      '#title' => $this->t('Expiration Notification Email'),
-      '#default_value' => $config->get('expiration_notification_email'),
-      '#description' => $this->t('Use this email to send a notification that the Facebook token is about to expire. When you get that email, you will need to come back to this page and log out from Facebook and log back in to refresh the token.'),
-    ];
 
     // Build the permissions form.
     $default_permissions = $config->get('permissions');
