@@ -154,14 +154,14 @@ class Autopost extends ContentEntityBase implements AutopostInterface {
    * {@inheritdoc}
    */
   public function isPosted() {
-    return (bool) $this->getEntityKey('posted');
+    return (bool) $this->get('posted')->value;
   }
 
   /**
    * {@inheritdoc}
    */
   public function setPosted($posted) {
-    $this->set('posted', $posted);
+    $this->set('posted', (bool) $posted);
     return $this;
   }
 
