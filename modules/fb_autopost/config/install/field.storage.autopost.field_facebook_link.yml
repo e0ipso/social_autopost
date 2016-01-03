@@ -1,0 +1,21 @@
+uuid: 3f89ebce-2896-467b-aa0b-1108fed07ebe
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_autopost
+id: autopost.field_facebook_link
+field_name: field_facebook_link
+entity_type: autopost
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

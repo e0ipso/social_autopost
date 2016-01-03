@@ -1,0 +1,30 @@
+uuid: 43326834-ee38-4fae-bf00-c70352ab19a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - social_autopost
+id: autopost.field_facebook_source
+field_name: field_facebook_source
+entity_type: autopost
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

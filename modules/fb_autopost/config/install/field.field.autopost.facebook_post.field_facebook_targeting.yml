@@ -1,0 +1,19 @@
+uuid: 16337b2e-e00e-4744-8f32-50b3decb284b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_targeting
+    - social_autopost.autopost_type.facebook_post
+id: autopost.facebook_post.field_facebook_targeting
+field_name: field_facebook_targeting
+entity_type: autopost
+bundle: facebook_post
+label: Targeting
+description: "JSON object containing countries, cities, regions or locales \r\nExample: {'countries':['US','GB']}"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

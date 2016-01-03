@@ -1,0 +1,19 @@
+uuid: d9163003-b1de-4096-8905-5dd752ec35cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_link
+    - social_autopost.autopost_type.facebook_post
+id: autopost.facebook_post.field_facebook_link
+field_name: field_facebook_link
+entity_type: autopost
+bundle: facebook_post
+label: Link
+description: 'Post URL'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

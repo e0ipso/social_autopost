@@ -1,0 +1,19 @@
+uuid: 452eb6c9-9a53-4ecc-9f09-0911cf17eecc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_picture
+    - social_autopost.autopost_type.facebook_post
+id: autopost.facebook_post.field_facebook_picture
+field_name: field_facebook_picture
+entity_type: autopost
+bundle: facebook_post
+label: Picture
+description: 'The picture scraped from any link included with the post'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

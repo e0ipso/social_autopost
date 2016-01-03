@@ -1,0 +1,6 @@
+uuid: 12d08c1e-5cae-4fa6-8500-cf3cd8701cb4
+langcode: en
+status: true
+dependencies: {  }
+id: facebook_photo
+label: 'Facebook Photo'

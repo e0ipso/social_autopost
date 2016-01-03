@@ -1,0 +1,19 @@
+uuid: dcbe418c-f2fd-479b-9a00-e08eeb155084
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_description
+    - social_autopost.autopost_type.facebook_post
+id: autopost.facebook_post.field_facebook_description
+field_name: field_facebook_description
+entity_type: autopost
+bundle: facebook_post
+label: Description
+description: 'A description of a link in the post (appears beneath the caption).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

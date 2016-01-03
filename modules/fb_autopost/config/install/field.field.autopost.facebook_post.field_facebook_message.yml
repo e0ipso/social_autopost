@@ -1,0 +1,19 @@
+uuid: 583be1ab-77a0-423d-9502-2d9cbcf36048
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_message
+    - social_autopost.autopost_type.facebook_post
+id: autopost.facebook_post.field_facebook_message
+field_name: field_facebook_message
+entity_type: autopost
+bundle: facebook_post
+label: Message
+description: 'Post message'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

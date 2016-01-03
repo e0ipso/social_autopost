@@ -1,0 +1,21 @@
+uuid: 4b354e31-28f4-4759-b123-3545d18336c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_autopost
+id: autopost.field_facebook_picture
+field_name: field_facebook_picture
+entity_type: autopost
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

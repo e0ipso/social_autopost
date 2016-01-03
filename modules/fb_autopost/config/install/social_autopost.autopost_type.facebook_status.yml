@@ -1,0 +1,6 @@
+uuid: 70504d99-68d0-47d2-a200-c7c4d71626fb
+langcode: en
+status: true
+dependencies: {  }
+id: facebook_status
+label: 'Facebook Status'

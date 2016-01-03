@@ -1,0 +1,19 @@
+uuid: bf317de1-c945-4de4-bc00-f8ea8d82ca1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_caption
+    - social_autopost.autopost_type.facebook_post
+id: autopost.facebook_post.field_facebook_caption
+field_name: field_facebook_caption
+entity_type: autopost
+bundle: facebook_post
+label: Caption
+description: "The caption of a link in the post (appears beneath the name).\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

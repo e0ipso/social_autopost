@@ -1,0 +1,19 @@
+uuid: feccfca1-9d79-4e45-911d-2972b06b0039
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_message
+    - social_autopost.autopost_type.facebook_photo
+id: autopost.facebook_photo.field_facebook_message
+field_name: field_facebook_message
+entity_type: autopost
+bundle: facebook_photo
+label: Message
+description: 'Photo description'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: d27d4b3f-5dea-40af-822e-461d3e0b9717
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_autopost
+id: autopost.field_facebook_caption
+field_name: field_facebook_caption
+entity_type: autopost
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

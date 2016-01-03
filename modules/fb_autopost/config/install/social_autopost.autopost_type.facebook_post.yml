@@ -1,0 +1,6 @@
+uuid: 562dd573-8f77-4b58-bb47-71d4def18da4
+langcode: en
+status: true
+dependencies: {  }
+id: facebook_post
+label: 'Facebook Post'

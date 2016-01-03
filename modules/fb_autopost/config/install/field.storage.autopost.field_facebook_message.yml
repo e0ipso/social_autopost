@@ -1,0 +1,19 @@
+uuid: 8b0c9f99-5c80-463a-9416-22f4333cac5d
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_autopost
+id: autopost.field_facebook_message
+field_name: field_facebook_message
+entity_type: autopost
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

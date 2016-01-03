@@ -1,0 +1,19 @@
+uuid: 3252cc11-6110-4c45-a900-a716909f63fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.autopost.field_facebook_feed_targeting
+    - social_autopost.autopost_type.facebook_photo
+id: autopost.facebook_photo.field_facebook_feed_targeting
+field_name: field_facebook_feed_targeting
+entity_type: autopost
+bundle: facebook_photo
+label: 'Feed targeting'
+description: "JSON object containing targeting parameters \r\nSee targeting."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
