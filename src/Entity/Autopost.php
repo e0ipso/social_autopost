@@ -57,7 +57,9 @@ use Drupal\user\UserInterface;
  * )
  */
 class Autopost extends ContentEntityBase implements AutopostInterface {
+
   use EntityChangedTrait;
+
   /**
    * {@inheritdoc}
    */
@@ -252,6 +254,21 @@ class Autopost extends ContentEntityBase implements AutopostInterface {
       ->setDescription(t('The time that the entity was last edited.'));
 
     return $fields;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function postCreate(EntityStorageInterface $storage) {
+    if (!$this->getName()) {
+      $created = new \DateTime($this->getCreatedTime());
+      $name = t('Post created on @date by @author', [
+        '@date' => $created->format(\DateTime::ISO8601),
+        '@author' => $this->getOwner()->label(),
+      ]);
+      $this->setName($name);
+    }
+    parent::postCreate($storage);
   }
 
 }
